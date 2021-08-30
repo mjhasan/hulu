@@ -1,7 +1,9 @@
-import Head from 'next/head'
-import Header from '../components/Header'
+import Head from 'next/head';
+import Header from '../components/Header';
+import Nav from '../components/Nav';
 
 export default function Home() {
+  console.log('API clg : ', process.env.API_KEY);
   return (
     <div>
       <Head>
@@ -10,7 +12,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-   
-      </div>
+      <Nav />
+    </div>
   )
+}
+
+export async function getServerSideProps(context) {
+  const genre = context.query.genre;
+  console.log(context.query);
+  return {
+    props: {}, // will be passed to the page component as props
+  }
 }
